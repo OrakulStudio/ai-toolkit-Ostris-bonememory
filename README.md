@@ -19,7 +19,7 @@
 > (179+ sec/iter at rank 1024).
 >
 > **Required files:**
-> - `manager_modules.py` ← the engine (mandatory)
+> - [manager_modules.py](https://github.com/OrakulStudio/ai-toolkit-Ostris-bonememory/blob/main/core/manager_modules.py) ← the engine (mandatory)
 > - `BaseSDTrainProcess.py` ← bf16 precision patch (mandatory)
 >
 > Installing one without the other will not produce these results.
