@@ -20,7 +20,7 @@
 >
 > **Required files:**
 > - [manager_modules.py](https://github.com/OrakulStudio/ai-toolkit-Ostris-bonememory/blob/main/core/manager_modules.py) ← the engine (mandatory)
-> - `BaseSDTrainProcess.py` ← bf16 precision patch (mandatory)
+> - [BaseSDTrainProcess.py](https://github.com/OrakulStudio/ai-toolkit-Ostris-bonememory/blob/main/core/BaseSDTrainProcess.py) ← bf16 precision patch (mandatory)
 >
 > Installing one without the other will not produce these results.
 
