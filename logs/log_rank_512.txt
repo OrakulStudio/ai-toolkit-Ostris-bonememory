@@ -1,0 +1,654 @@
+WARNING:torchao.kernel.intmm:Warning: Detected no triton, on systems without Triton certain kernels will not work
+Running 1 job
+{
+    "type": "diffusion_trainer",
+    "training_folder": "D:\\AI_Models\\ai-toolkit\\output",
+    "sqlite_db_path": "D:\\AI_Models\\ai-toolkit\\aitk_db.db",
+    "device": "cuda",
+    "trigger_word": "testrank512",
+    "performance_log_every": 10,
+    "network": {
+        "type": "lora",
+        "linear": 512,
+        "linear_alpha": 64,
+        "conv": 32,
+        "conv_alpha": 64,
+        "lokr_full_rank": true,
+        "lokr_factor": -1,
+        "network_kwargs": {
+            "ignore_if_contains": []
+        }
+    },
+    "save": {
+        "dtype": "bf16",
+        "save_every": 500,
+        "max_step_saves_to_keep": 4,
+        "save_format": "diffusers",
+        "push_to_hub": false
+    },
+    "datasets": [
+        {
+            "folder_path": "D:\\AI_Models\\datasets\\igruwki512",
+            "mask_path": null,
+            "mask_min_value": 0.1,
+            "default_caption": "",
+            "caption_ext": "txt",
+            "caption_dropout_rate": 0.05,
+            "cache_latents_to_disk": true,
+            "is_reg": false,
+            "network_weight": 1,
+            "resolution": [
+                512
+            ],
+            "controls": [],
+            "shrink_video_to_frames": true,
+            "num_frames": 1,
+            "flip_x": false,
+            "flip_y": false,
+            "num_repeats": 1,
+            "control_path_1": null,
+            "control_path_2": null,
+            "control_path_3": null
+        }
+    ],
+    "train": {
+        "batch_size": 1,
+        "bypass_guidance_embedding": false,
+        "steps": 2000,
+        "gradient_accumulation": 1,
+        "train_unet": true,
+        "train_text_encoder": false,
+        "gradient_checkpointing": true,
+        "noise_scheduler": "flowmatch",
+        "optimizer": "adafactor",
+        "timestep_type": "weighted",
+        "content_or_style": "balanced",
+        "optimizer_params": {
+            "weight_decay": 0.0001
+        },
+        "unload_text_encoder": true,
+        "cache_text_embeddings": false,
+        "lr": 0.0001,
+        "ema_config": {
+            "use_ema": false,
+            "ema_decay": 0.99
+        },
+        "skip_first_sample": true,
+        "force_first_sample": false,
+        "disable_sampling": true,
+        "dtype": "bf16",
+        "diff_output_preservation": false,
+        "diff_output_preservation_multiplier": 1,
+        "diff_output_preservation_class": "person",
+        "switch_boundary_every": 1,
+        "loss_type": "mse"
+    },
+    "logging": {
+        "log_every": 1,
+        "use_ui_logger": false
+    },
+    "model": {
+        "name_or_path": "black-forest-labs/FLUX.2-dev",
+        "quantize": true,
+        "qtype": "qfloat8",
+        "quantize_te": false,
+        "qtype_te": "qfloat8",
+        "arch": "flux2",
+        "low_vram": true,
+        "model_kwargs": {
+            "match_target_res": false
+        },
+        "layer_offloading": true,
+        "layer_offloading_text_encoder_percent": 0.75,
+        "layer_offloading_transformer_percent": 0.75
+    },
+    "sample": {
+        "sampler": "flowmatch",
+        "sample_every": 250,
+        "width": 1024,
+        "height": 1024,
+        "samples": [],
+        "neg": "",
+        "seed": 42,
+        "walk_seed": true,
+        "guidance_scale": 4,
+        "sample_steps": 25,
+        "num_frames": 1,
+        "fps": 1
+    }
+}
+Using SQLite database at D:\AI_Models\ai-toolkit\aitk_db.db
+
+#############################################
+# Running job: testrank512
+#############################################
+
+
+Running  1 process
+Loading Flux2 model
+Loading transformer
+Quantizing Transformer
+ - quantizing 56 transformer blocks
+  0%|          | 0/56 [00:00<?, ?it/s]  2%|▏         | 1/56 [00:00<00:29,  1.88it/s]  4%|▎         | 2/56 [00:00<00:21,  2.47it/s]  5%|▌         | 3/56 [00:01<00:19,  2.73it/s]  7%|▋         | 4/56 [00:01<00:18,  2.86it/s]  9%|▉         | 5/56 [00:01<00:17,  2.92it/s] 11%|█         | 6/56 [00:02<00:16,  3.00it/s] 12%|█▎        | 7/56 [00:02<00:16,  3.04it/s] 14%|█▍        | 8/56 [00:02<00:15,  3.08it/s] 16%|█▌        | 9/56 [00:03<00:14,  3.16it/s] 18%|█▊        | 10/56 [00:03<00:14,  3.18it/s] 20%|█▉        | 11/56 [00:03<00:12,  3.58it/s] 21%|██▏       | 12/56 [00:03<00:11,  3.78it/s] 23%|██▎       | 13/56 [00:04<00:10,  3.96it/s] 25%|██▌       | 14/56 [00:04<00:10,  4.04it/s] 27%|██▋       | 15/56 [00:04<00:09,  4.11it/s] 29%|██▊       | 16/56 [00:04<00:09,  4.16it/s] 30%|███       | 17/56 [00:05<00:09,  4.05it/s] 32%|███▏      | 18/56 [00:05<00:10,  3.69it/s] 34%|███▍      | 19/56 [00:05<00:10,  3.42it/s] 36%|███▌      | 20/56 [00:05<00:10,  3.34it/s] 38%|███▊      | 21/56 [00:06<00:10,  3.28it/s] 39%|███▉      | 22/56 [00:06<00:10,  3.24it/s] 41%|████      | 23/56 [00:06<00:10,  3.17it/s] 43%|████▎     | 24/56 [00:07<00:10,  3.10it/s] 45%|████▍     | 25/56 [00:07<00:10,  3.04it/s] 46%|████▋     | 26/56 [00:07<00:09,  3.01it/s] 48%|████▊     | 27/56 [00:08<00:09,  2.97it/s] 50%|█████     | 28/56 [00:08<00:09,  2.96it/s] 52%|█████▏    | 29/56 [00:09<00:09,  2.95it/s] 54%|█████▎    | 30/56 [00:09<00:08,  2.93it/s] 55%|█████▌    | 31/56 [00:09<00:08,  2.93it/s] 57%|█████▋    | 32/56 [00:10<00:08,  2.94it/s] 59%|█████▉    | 33/56 [00:10<00:07,  2.93it/s] 61%|██████    | 34/56 [00:10<00:07,  2.89it/s] 62%|██████▎   | 35/56 [00:11<00:07,  2.87it/s] 64%|██████▍   | 36/56 [00:11<00:07,  2.74it/s] 66%|██████▌   | 37/56 [00:11<00:07,  2.56it/s] 68%|██████▊   | 38/56 [00:12<00:07,  2.56it/s] 70%|██████▉   | 39/56 [00:12<00:06,  2.57it/s] 71%|███████▏  | 40/56 [00:13<00:06,  2.38it/s] 73%|███████▎  | 41/56 [00:13<00:06,  2.41it/s] 75%|███████▌  | 42/56 [00:14<00:05,  2.45it/s] 77%|███████▋  | 43/56 [00:14<00:05,  2.47it/s] 79%|███████▊  | 44/56 [00:14<00:04,  2.44it/s] 80%|████████  | 45/56 [00:15<00:04,  2.49it/s] 82%|████████▏ | 46/56 [00:15<00:03,  2.50it/s] 84%|████████▍ | 47/56 [00:16<00:03,  2.43it/s] 86%|████████▌ | 48/56 [00:16<00:03,  2.46it/s] 88%|████████▊ | 49/56 [00:16<00:02,  2.49it/s] 89%|████████▉ | 50/56 [00:17<00:02,  2.53it/s] 91%|█████████ | 51/56 [00:17<00:01,  2.55it/s] 93%|█████████▎| 52/56 [00:17<00:01,  2.55it/s] 95%|█████████▍| 53/56 [00:18<00:01,  2.67it/s] 96%|█████████▋| 54/56 [00:18<00:00,  2.52it/s] 98%|█████████▊| 55/56 [00:19<00:00,  2.65it/s]100%|██████████| 56/56 [00:19<00:00,  2.73it/s]100%|██████████| 56/56 [00:19<00:00,  2.88it/s]
+`torch_dtype` is deprecated! Use `dtype` instead!
+ - quantizing extras
+Moving transformer to CPU
+Loading Mistral
+Loading checkpoint shards:   0%|          | 0/10 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 2/10 [00:00<00:00, 19.77it/s]Loading checkpoint shards:  70%|███████   | 7/10 [00:00<00:00, 36.03it/s]Loading checkpoint shards: 100%|██████████| 10/10 [00:00<00:00, 41.45it/s]
+The tokenizer you are loading from 'mistralai/Mistral-Small-3.1-24B-Instruct-2503' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+Loading VAE
+Making pipe
+Preparing Model
+Model Loaded
+create LoRA network. base dim (rank): 512, alpha: 512
+neuron dropout: p=None, rank dropout: p=None, module dropout: p=None
+apply LoRA to Conv2d with kernel size (3,3). dim (rank): 32, alpha: 32
+create LoRA for Text Encoder: 0 modules.
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+
+🦾 VIKING ATTACK: FORCING SCALE TO 2.0 (EQUIVALENT TO ALPHA 64) 🦾
+
+create LoRA for U-Net: 160 modules.
+enable LoRA for U-Net
+#### IMPORTANT RESUMING FROM D:\AI_Models\ai-toolkit\output\testrank512\testrank512_000000050.safetensors ####
+Loading from D:\AI_Models\ai-toolkit\output\testrank512\testrank512_000000050.safetensors
+Missing keys: []
+Found step 50 in metadata, starting from there
+Total training paramiters: 3,120,562,176
+Loading optimizer state from D:\AI_Models\ai-toolkit\output\testrank512\optimizer.pt
+Updating optimizer LR from params
+Dataset: D:\AI_Models\datasets\igruwki512
+  -  Preprocessing image dimensions
+  0%|          | 0/25 [00:00<?, ?it/s]100%|██████████| 25/25 [00:00<00:00, 12491.97it/s]
+  -  Found 25 images
+Bucket sizes for D:\AI_Models\datasets\igruwki512:
+512x512: 25 files
+1 buckets made
+Caching latents for D:\AI_Models\datasets\igruwki512
+ - Saving latents to disk
+Caching latents to disk:   0%|          | 0/25 [00:00<?, ?it/s]Caching latents to disk: 100%|██████████| 25/25 [00:00<00:00, 14389.68it/s]
+Caching embeddings and unloading text encoder
+
+***** UNLOADING TEXT ENCODER *****
+This will train only with a blank prompt or trigger word, if set
+If this is not what you want, remove the unload_text_encoder flag
+***********************************
+
+Skipping first sample due to config setting
+testrank512:   2%|▎         | 50/2000 [00:00<?, ?it/s]testrank512:   2%|▎         | 50/2000 [00:48<?, ?it/s, lr: 1.0e-04 loss: 5.999e-01]testrank512:   2%|▎         | 50/2000 [00:48<?, ?it/s, lr: 1.0e-04 loss: 5.999e-01]testrank512:   2%|▎         | 50/2000 [00:57<?, ?it/s, lr: 1.0e-04 loss: 1.393e+00]testrank512:   3%|▎         | 51/2000 [01:11<38:32:54, 71.20s/it, lr: 1.0e-04 loss: 1.198e+00]testrank512:   3%|▎         | 52/2000 [01:24<22:51:36, 42.25s/it, lr: 1.0e-04 loss: 8.922e-01]testrank512:   3%|▎         | 53/2000 [01:37<17:37:56, 32.60s/it, lr: 1.0e-04 loss: 4.904e-01]testrank512:   3%|▎         | 54/2000 [01:51<15:01:24, 27.79s/it, lr: 1.0e-04 loss: 1.252e+00]testrank512:   3%|▎         | 55/2000 [02:04<13:27:33, 24.91s/it, lr: 1.0e-04 loss: 7.351e-01]testrank512:   3%|▎         | 56/2000 [02:17<12:25:03, 23.00s/it, lr: 1.0e-04 loss: 4.136e-01]testrank512:   3%|▎         | 57/2000 [02:31<11:39:38, 21.61s/it, lr: 1.0e-04 loss: 1.097e+00]testrank512:   3%|▎         | 58/2000 [02:44<11:05:13, 20.55s/it, lr: 1.0e-04 loss: 4.714e-01]testrank512:   3%|▎         | 59/2000 [02:57<10:38:58, 19.75s/it, lr: 1.0e-04 loss: 5.002e-01]testrank512:   3%|▎         | 60/2000 [03:11<10:18:04, 19.12s/it, lr: 1.0e-04 loss: 9.285e-01]testrank512:   3%|▎         | 61/2000 [03:24<10:00:53, 18.59s/it, lr: 1.0e-04 loss: 2.846e-01]testrank512:   3%|▎         | 62/2000 [03:37<9:46:01, 18.14s/it, lr: 1.0e-04 loss: 4.996e-01] testrank512:   3%|▎         | 63/2000 [03:50<9:33:29, 17.76s/it, lr: 1.0e-04 loss: 1.177e+00]testrank512:   3%|▎         | 64/2000 [04:04<9:22:48, 17.44s/it, lr: 1.0e-04 loss: 1.036e+00]testrank512:   3%|▎         | 65/2000 [04:17<9:13:20, 17.16s/it, lr: 1.0e-04 loss: 8.055e-02]testrank512:   3%|▎         | 66/2000 [04:30<9:05:00, 16.91s/it, lr: 1.0e-04 loss: 1.277e+00]testrank512:   3%|▎         | 67/2000 [04:43<8:57:36, 16.69s/it, lr: 1.0e-04 loss: 1.313e+00]testrank512:   3%|▎         | 68/2000 [04:56<8:51:04, 16.49s/it, lr: 1.0e-04 loss: 1.013e+00]testrank512:   3%|▎         | 69/2000 [05:10<8:45:15, 16.32s/it, lr: 1.0e-04 loss: 3.264e-01]testrank512:   4%|▎         | 70/2000 [05:23<8:40:03, 16.17s/it, lr: 1.0e-04 loss: 5.410e-01]testrank512:   4%|▎         | 71/2000 [05:36<8:35:20, 16.03s/it, lr: 1.0e-04 loss: 2.635e-01]testrank512:   4%|▎         | 72/2000 [05:49<8:30:52, 15.90s/it, lr: 1.0e-04 loss: 6.773e-01]testrank512:   4%|▎         | 73/2000 [06:03<8:27:01, 15.79s/it, lr: 1.0e-04 loss: 1.156e+00]testrank512:   4%|▎         | 74/2000 [06:16<8:23:14, 15.68s/it, lr: 1.0e-04 loss: 8.781e-01]testrank512:   4%|▍         | 75/2000 [06:29<8:19:51, 15.58s/it, lr: 1.0e-04 loss: 5.475e-01]testrank512:   4%|▍         | 76/2000 [06:42<8:16:48, 15.49s/it, lr: 1.0e-04 loss: 1.213e+00]testrank512:   4%|▍         | 77/2000 [06:55<8:13:46, 15.41s/it, lr: 1.0e-04 loss: 1.236e-01]testrank512:   4%|▍         | 78/2000 [07:09<8:11:01, 15.33s/it, lr: 1.0e-04 loss: 2.824e-01]testrank512:   4%|▍         | 79/2000 [07:22<8:08:30, 15.26s/it, lr: 1.0e-04 loss: 1.279e-01]testrank512:   4%|▍         | 80/2000 [07:35<8:06:02, 15.19s/it, lr: 1.0e-04 loss: 1.238e+00]testrank512:   4%|▍         | 81/2000 [07:48<8:03:40, 15.12s/it, lr: 1.0e-04 loss: 5.813e-01]testrank512:   4%|▍         | 82/2000 [08:02<8:01:31, 15.06s/it, lr: 1.0e-04 loss: 3.188e-01]testrank512:   4%|▍         | 83/2000 [08:15<7:59:27, 15.01s/it, lr: 1.0e-04 loss: 1.204e+00]testrank512:   4%|▍         | 84/2000 [08:28<7:57:33, 14.95s/it, lr: 1.0e-04 loss: 1.234e+00]testrank512:   4%|▍         | 85/2000 [08:41<7:55:46, 14.91s/it, lr: 1.0e-04 loss: 3.882e-01]testrank512:   4%|▍         | 86/2000 [08:54<7:53:59, 14.86s/it, lr: 1.0e-04 loss: 8.213e-01]
