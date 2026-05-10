@@ -235,6 +235,11 @@ testrank1024: step 22 →  47.01s/it  (stable)
 ```
 [log_rank_1024](https://github.com/OrakulStudio/ai-toolkit-Ostris-bonememory/blob/main/logs/log_rank_1024.txt)
 
+[log_rank_1024_аlfa64](https://github.com/OrakulStudio/ai-toolkit-Ostris-bonememory/blob/main/logs/log_rank_1024_%D0%B0lfa64.txt)
+
+<img width="3839" height="2159" alt="Снимок экрана 2026-05-09 175606" src="https://github.com/user-attachments/assets/d4c05e71-41e1-4d17-a9ac-6dce69040302" />
+
+
 ### Total training parameters confirmed:
 ```
 Rank 512:  Total training paramiters: 3,120,562,176
