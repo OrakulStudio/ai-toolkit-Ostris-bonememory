@@ -233,6 +233,7 @@ testrank1024: step 10 →  54.80s/it
 testrank1024: step 20 →  47.46s/it  (stabilizing)
 testrank1024: step 22 →  47.01s/it  (stable)
 ```
+[log_rank_1024](https://github.com/OrakulStudio/ai-toolkit-Ostris-bonememory/blob/main/logs/log_rank_1024.txt)
 
 ### Total training parameters confirmed:
 ```
