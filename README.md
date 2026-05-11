@@ -226,9 +226,6 @@ testrank512: step 86 →  14.86s/it  (still dropping...)
 [log_rank_512](https://github.com/OrakulStudio/ai-toolkit-Ostris-bonememory/blob/main/logs/log_rank_512.txt)
 
 
-[![Speed ​​demonstration: (Rank 512)](https://img.youtube.com/vi/3MGMZgd6ld0/maxresdefault.jpg)](https://www.youtube.com/watch?v=3MGMZgd6ld0)
-
-
 [Speed ​​demonstration: (Rank 512)](https://www.youtube.com/watch?v=3MGMZgd6ld0)
 
 
