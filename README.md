@@ -224,8 +224,6 @@ testrank512: step 80 →  15.19s/it
 testrank512: step 86 →  14.86s/it  (still dropping...)
 ```
 [log_rank_512](https://github.com/OrakulStudio/ai-toolkit-Ostris-bonememory/blob/main/logs/log_rank_512.txt)
-
-
 [original_benchmark_videos](https://github.com/OrakulStudio/ai-toolkit-Ostris-bonememory/releases/download/media-assets/Rank512.mp4)
 
 
