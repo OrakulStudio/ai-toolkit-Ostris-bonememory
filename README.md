@@ -225,6 +225,8 @@ testrank512: step 86 →  14.86s/it  (still dropping...)
 ```
 [log_rank_512](https://github.com/OrakulStudio/ai-toolkit-Ostris-bonememory/blob/main/logs/log_rank_512.txt)
 
+[original benchmark videos](https://github.com/OrakulStudio/ai-toolkit-Ostris-bonememory/releases/download/media-assets/Rank512.mp4)
+
 ### Rank 1024 warmup (bf32):
 ```
 testrank1024: step 1  → 181.33s/it  (cold start)
