@@ -229,6 +229,9 @@ testrank512: step 86 →  14.86s/it  (still dropping...)
 [![Speed ​​demonstration: (Rank 512)](https://img.youtube.com/vi/3MGMZgd6ld0/maxresdefault.jpg)](https://www.youtube.com/watch?v=3MGMZgd6ld0)
 
 
+[Speed ​​demonstration: (Rank 512)](https://www.youtube.com/watch?v=3MGMZgd6ld0)
+
+
 ### Rank 1024 warmup (bf32):
 ```
 testrank1024: step 1  → 181.33s/it  (cold start)
