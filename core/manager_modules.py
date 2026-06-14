@@ -1,3 +1,32 @@
+import sys
+
+# ==============================================================================
+# VIKING ENGINE: EXECUTABLE CONSOLE BANNER
+# ==============================================================================
+print("\n" + "="*78, file=sys.stderr)
+print("  ###  ###   ### #  # #  # #       ###  ### #  # ###  #  ### ", file=sys.stderr)
+print(" #   # #  # #  # # #  #  # #      #      #  #  # #  # # #   #", file=sys.stderr)
+print(" #   # ###  #### ##   #  # #       ##    #  #  # #  # # #   #", file=sys.stderr)
+print(" #   # #  # #  # # #  #  # #         #   #  #  # #  # # #   #", file=sys.stderr)
+print("  ###  #  # #  # #  #  ##  ###    ###    #   ##  ###  #  ### ", file=sys.stderr)
+print(" VIKING ENGINE: ASYNCHRONOUS MEMORY MANAGER ", file=sys.stderr)
+print("="*78, file=sys.stderr)
+print("• Core Architecture & Optimization : Orakul Studio (Roman Nikonov)", file=sys.stderr)
+print("• The magic of clean code          : Created to the sounds of war and constant shelling", file=sys.stderr)
+print("• Philosophy                       : Ostris created the brain. I taught it how to think.", file=sys.stderr)
+print("• Origin / Location                : Chernihiv, Ukraine 🇺🇦", file=sys.stderr)
+print("• Creation date                    : 10.03.2026", file=sys.stderr)
+print("• Current Status                   : Working under fire. System stable.", file=sys.stderr)
+print("• Hardware Target                  : Ada Lovelace (RTX 4090)", file=sys.stderr)
+print("\n• Core Features & Pipelines:", file=sys.stderr)
+print("  - Double-buffered async weight streaming (Zero OOM at rank 1024+)", file=sys.stderr)
+print("  - CPU Pinned Memory pre-staging (Bypassing pagefile/swap)", file=sys.stderr)
+print("  - Hardware-level BF16/FP8 (E5M2) execution pipeline", file=sys.stderr)
+print("  - 100% Deterministic Checkpoint Resume (Anti-Stall & Zero Lottery)", file=sys.stderr)
+print("\n• Official Fork Hub:  https://github.com/OrakulStudio/AI-Toolkit-Viking-Engine-Fork", file=sys.stderr)
+print("="*78 + "\n", file=sys.stderr)
+# ==============================================================================
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
