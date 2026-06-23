@@ -154,20 +154,8 @@ For large ranks, compute time per layer is long enough to completely
 hide the transfer latency. Double-buffering activates:
 
 ```python
-# _BouncingLinearFn.forward()
-# Two buffers — ping and pong
-# Transfer stream runs PARALLEL to compute stream
-
-with torch.cuda.stream(state["transfer_stream"]):
-    state["transfer_stream"].wait_event(state["compute_forward_start_event"])
-    w = weight_cpu.to(device, non_blocking=True)   # non-blocking DMA
-    state["w_buffers"][idx] = _dequant(w, dtype)
-    state["forward_clk"] ^= 1                       # 0→1→0→1 ping-pong
-    state["transfer_forward_finished_event"].record()
-
-torch.cuda.current_stream().wait_event(state["transfer_forward_finished_event"])
-state["compute_forward_start_event"].record()
-return F.linear(x, state["w_buffers"][idx], state["b_buffers"][idx])
+> 🔒 **Orakul Studio Proprietary Tech**  
+> Core architecture and high-performance memory optimization layers are closed-source. Distributed exclusively via compiled binary module. The repository is open, and the pipeline is fully functional and stable..
 ```
 
 **Result: transfer disappears from the profiler entirely.**
@@ -209,10 +197,8 @@ We went there.
 ### Pinned Memory — DMA Without CPU Cache
 
 ```python
-def _ensure_cpu_pinned(t):
-    if not t.is_pinned():
-        t = t.pin_memory()
-    return t
+> 🔒 **Orakul Studio Proprietary Tech**  
+> Core architecture and high-performance memory optimization layers are closed-source. Distributed exclusively via compiled binary module. The repository is open, and the pipeline is fully functional and stable..
 ```
 
 Standard RAM can be paged out by the OS at any time.
