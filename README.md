@@ -42,7 +42,7 @@ This code was designed, rewritten, and optimized exclusively for directly runnin
 > (179+ sec/iter at rank 1024).
 >
 > **Required files:**
-> - [manager_modules.py](https://github.com/OrakulStudio/ai-toolkit-Ostris-bonememory/blob/main/core/manager_modules.py) ← the engine (mandatory)
+> - [manager_modules.pyd](https://github.com/OrakulStudio/ai-toolkit-Ostris-bonememory/blob/main/core/manager_modules.pyd) ← the engine (mandatory)
 > - [BaseSDTrainProcess.py](https://github.com/OrakulStudio/ai-toolkit-Ostris-bonememory/blob/main/core/BaseSDTrainProcess.py) ← bf16 precision patch (mandatory)
 >
 > Installing one without the other will not produce these results.
