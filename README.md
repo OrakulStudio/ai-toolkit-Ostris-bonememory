@@ -3,7 +3,7 @@
 **Double-buffered async CUDA memory manager + bf16 precision forcing**  
 **6.24 billion trainable parameters on a single RTX 4090. Zero OOM.**
 
-*Orakul Studio — Chernihiv, Ukraine 🇺🇦*
+*Orakul Studio - Chernihiv, Ukraine 🇺🇦*
 
 [history in the making](https://github.com/OrakulStudio/AI-Toolkit-Memory-Manager-Fix)
 
@@ -17,7 +17,7 @@ This code was designed, rewritten, and optimized exclusively for directly runnin
 
 ### What breaks when running via the Web UI:
 
-1. Dynamic Alpha — DOESN'T WORK AT ALL**
+1. Dynamic Alpha  DOESN'T WORK AT ALL**
 * This repository implements dynamic Alpha recalculation logic for correct weight scaling (Scale = Alpha / Rank). For example, when working with high ranks (Rank 128, Rank 512, Rank 1024), the system automatically calculates a fair scale (down to Scale = 0.5000), allowing the model to deeply learn the structure and physics of the material.
 * **The web UI completely ignores this logic.** Almost all web wrappers under the hood forcibly overwrite this parameter and force a fixed Alpha = 16. At high ranks, this turns training into a dud: weight changes are suppressed, gradients tend to zero, the model visually "learns" without errors, but produces default output.
 
@@ -52,7 +52,7 @@ This code was designed, rewritten, and optimized exclusively for directly runnin
 ## Works With All Models in ai-toolkit
 
 Flux2 was chosen as the **test model** because it is the heaviest
-available — 32 billion parameters — making it the most demanding
+available  32 billion parameters — making it the most demanding
 benchmark for any memory optimization.
 
 **This engine works with every model supported by ostris/ai-toolkit:**
@@ -71,7 +71,7 @@ it works everywhere.
 
 ## The Numbers
 
-### Production Training — Rank 32 / Alpha 64 (recommended)
+### Production Training  Rank 32 / Alpha 64 (recommended)
 
 | Metric | Value |
 |---|---|
@@ -115,7 +115,7 @@ superior quality — not just speed.
 
 🔗 [Orakul Studio on CivitAI](https://civitai.com/user/orakul_storm)
 
-If the speed results raise doubts — the trained models are the answer.
+If the speed results raise doubts  the trained models are the answer.
 
 ---
 
@@ -148,7 +148,7 @@ w = _dequant(w, dtype)
 return F.linear(x, w, b)
 ```
 
-### Engine 2: Double-Buffered Async (Large Ranks — 512, 1024)
+### Engine 2: Double-Buffered Async (Large Ranks  512, 1024)
 
 For large ranks, compute time per layer is long enough to completely
 hide the transfer latency. Double-buffering activates:
@@ -173,9 +173,8 @@ hide the transfer latency. Double-buffering activates:
 One line. Added before `network.apply_to()`:
 
 ```python
-# Викинг метод ранг 1024
-# todo switch everything to proper mixed precision like this
-self.network.force_to(self.device_torch, dtype=torch.bfloat16)
+> 🔒 **Orakul Studio Proprietary Tech**  
+> Core architecture and high-performance memory optimization layers are closed-source. Distributed exclusively via compiled binary module. The repository is open, and the pipeline is fully functional and stable..
 ```
 
 **What this does:**
@@ -269,14 +268,8 @@ Rank 1024: Total training paramiters: 6,241,124,352
 This is not a consumer GPU workaround. It is architecture.
 
 ```python
-# Consumer: CPU RAM → GPU VRAM (PCIe)
-w = weight_cpu.to(device, non_blocking=True)
-
-# Server NVLink: GPU_0 VRAM → GPU_1 VRAM
-w = weight_gpu0.to(device_1, non_blocking=True)
-
-# Tensor parallelism: shard assembly
-w_shard = weight_shard.to(target_device, non_blocking=True)
+> 🔒 **Orakul Studio Proprietary Tech**  
+> Core architecture and high-performance memory optimization layers are closed-source. Distributed exclusively via compiled binary module. The repository is open, and the pipeline is fully functional and stable..
 ```
 
 Same double-buffering. Same CUDA Streams. Same Events.
@@ -320,7 +313,7 @@ block (around line 1774) and add one line:
 self.network.force_to(self.device_torch, dtype=torch.bfloat16)
 ```
 
-### Step 4 — Recommended config (rank 32, balanced)
+### Step 4  Recommended config (rank 32, balanced)
 
 ```yaml
 network:
