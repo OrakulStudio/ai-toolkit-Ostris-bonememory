@@ -1,4 +1,6 @@
 # ⚡ Viking Engine: Sub-Linear LoRA Scaling for Ostris AI-Toolkit
+[![DOI](https://zenodo.org/badge/1234496396.svg)](https://doi.org/10.5281/zenodo.22705009)
+
 
 **Double-buffered async CUDA memory manager + bf16 precision forcing**  
 **6.24 billion trainable parameters on a single RTX 4090. Zero OOM.**
