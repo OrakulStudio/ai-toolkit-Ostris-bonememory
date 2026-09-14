@@ -1,5 +1,5 @@
 # ⚡ Viking Engine: Sub-Linear LoRA Scaling for Ostris AI-Toolkit
-[![DOI](https://img.shields.io/badge/DOI.org/10.5281/zenodo.22705010-blue.svg?style=for-the-badge)](https://doi.org/10.5281/zenodo.22705010)
+[![DOI](https://img.shields.io/badge/DOI.org/10.5281/zenodo.22705010-blue.svg?style=flat&logo=zenodo)](https://doi.org/10.5281/zenodo.22705010)
 
 
 **Double-buffered async CUDA memory manager + bf16 precision forcing**  
